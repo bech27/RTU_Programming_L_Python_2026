@@ -67,8 +67,10 @@ def largest_city(populations: dict[str, int]) -> tuple[str, int]:
 
 def smallest_city(populations: dict[str, int]) -> tuple[str, int]:
     """Return (city, population) for the city with the smallest population."""
-    # TODO: implement
-    raise NotImplementedError("smallest_city() is not implemented yet")
+    if not populations:
+            return ("", 0)
+    name = min(populations, key=lambda city: populations[city])
+    return (name, populations[name])
 
 
 def total_population(populations: dict[str, int]) -> int:
@@ -93,7 +95,10 @@ if __name__ == "__main__":
     avg = average(temperatures)
     print(f"Average temperature: {average(temperatures):.1f}")
 
-    city, population = largest_city(city_population)
-    print(f"Largest city: {city} - {population}")
+    maxcity, maxpopulation = largest_city(city_population)
+    print(f"Largest city: {maxcity} - {maxpopulation}")
+
+    mincity, minpopulation = smallest_city(city_population)
+    print(f"Smallest city: {mincity} - {minpopulation}")
     # TODO: call the functions above and print the results
     pass
