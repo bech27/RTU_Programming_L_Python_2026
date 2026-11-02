@@ -53,8 +53,9 @@ Examples (these are also used to check your work):
 
 def average(values: list[float]) -> float:
     """Return the average of values, or 0.0 for an empty list."""
-    # TODO: implement
-    raise NotImplementedError("average() is not implemented yet")
+    if len(values) == 0:
+        return 0.0
+    return sum(values) / len(values)
 
 
 def largest_city(populations: dict[str, int]) -> tuple[str, int]:
@@ -78,10 +79,11 @@ def total_population(populations: dict[str, int]) -> int:
 if __name__ == "__main__":
     # Keep all input() and print() calls inside this block, otherwise the
     # autograder cannot import your file.
-
     # TODO: Create your own datasets - up to you to fill in the data
-    temperatures = []
+    temperatures = [15.2, 12.4, 13.9, 8.7, 14.4, 9.0, 10.1]
     city_population = {}
 
+    avg = average(temperatures)
+    print(f"Average temperature: {avg:.1f}")
     # TODO: call the functions above and print the results
     pass
