@@ -60,9 +60,10 @@ def average(values: list[float]) -> float:
 
 def largest_city(populations: dict[str, int]) -> tuple[str, int]:
     """Return (city, population) for the city with the largest population."""
-    # TODO: implement
-    raise NotImplementedError("largest_city() is not implemented yet")
-
+    if not populations:
+        return ("", 0)
+    name = max(populations, key=lambda city: populations[city])
+    return (name, populations[name])
 
 def smallest_city(populations: dict[str, int]) -> tuple[str, int]:
     """Return (city, population) for the city with the smallest population."""
@@ -81,9 +82,18 @@ if __name__ == "__main__":
     # autograder cannot import your file.
     # TODO: Create your own datasets - up to you to fill in the data
     temperatures = [15.2, 12.4, 13.9, 8.7, 14.4, 9.0, 10.1]
-    city_population = {}
+    city_population = {
+        "Dagda": 1756,
+        "Tērvete": 1808,
+        "Skrunda": 1770,
+        "Jelgava": 59441,
+        "Aglona": 791,
+    }
 
     avg = average(temperatures)
-    print(f"Average temperature: {avg:.1f}")
+    print(f"Average temperature: {average(temperatures):.1f}")
+
+    city, population = largest_city(city_population)
+    print(f"Largest city: {city} - {population}")
     # TODO: call the functions above and print the results
     pass
