@@ -62,7 +62,7 @@ def largest_city(populations: dict[str, int]) -> tuple[str, int]:
     """Return (city, population) for the city with the largest population."""
     if not populations:
         return ("", 0)
-    name = max(populations, key=lambda city: populations[city])
+    name = max(populations, key=populations.get)
     return (name, populations[name])
 
 def smallest_city(populations: dict[str, int]) -> tuple[str, int]:
@@ -75,14 +75,12 @@ def smallest_city(populations: dict[str, int]) -> tuple[str, int]:
 
 def total_population(populations: dict[str, int]) -> int:
     """Return the sum of all populations."""
-    # TODO: implement
-    raise NotImplementedError("total_population() is not implemented yet")
+    if populations == 0:
+        return 0
+    return sum(populations.values())
 
 
 if __name__ == "__main__":
-    # Keep all input() and print() calls inside this block, otherwise the
-    # autograder cannot import your file.
-    # TODO: Create your own datasets - up to you to fill in the data
     temperatures = [15.2, 12.4, 13.9, 8.7, 14.4, 9.0, 10.1]
     city_population = {
         "Dagda": 1756,
@@ -100,5 +98,6 @@ if __name__ == "__main__":
 
     mincity, minpopulation = smallest_city(city_population)
     print(f"Smallest city: {mincity} - {minpopulation}")
-    # TODO: call the functions above and print the results
-    pass
+
+    total = total_population(city_population)
+    print(f"Total  population: {total}")
