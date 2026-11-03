@@ -59,20 +59,17 @@ QUANTITIES = [2, 5, 1, 3, 4]
 
 def item_totals(prices: list[float], quantities: list[int]) -> list[float]:
     """Return price * quantity for each item, using map() and a lambda."""
-    # TODO: implement with map()
-    raise NotImplementedError("item_totals() is not implemented yet")
+    return list(map(lambda p, q: p * q, prices, quantities))
 
 
 def filter_above(totals: list[float], threshold: float = 30) -> list[float]:
     """Return totals greater than threshold, using filter() and a lambda."""
-    # TODO: implement with filter()
-    raise NotImplementedError("filter_above() is not implemented yet")
+    return list(filter(lambda t: t > threshold, totals))
 
 
 def pair_up(prices: list[float], quantities: list[int]) -> list[tuple]:
     """Return a list of (price, quantity) tuples, using zip()."""
-    # TODO: implement with zip()
-    raise NotImplementedError("pair_up() is not implemented yet")
+    return list(zip(prices, quantities))
 
 
 # ---------- Part B: list comprehensions ----------
@@ -93,4 +90,6 @@ if __name__ == "__main__":
     # Keep all input() and print() calls inside this block, otherwise the
     # autograder cannot import your file.
     # TODO: call every function with PRICES and QUANTITIES and print results
+    totals = item_totals(PRICES, QUANTITIES)
+    print(f"Totals: {totals}")
     pass
